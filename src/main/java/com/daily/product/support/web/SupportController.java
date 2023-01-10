@@ -1,6 +1,7 @@
 package com.daily.product.support.web;
 
 import com.daily.product.support.domain.faq.Faq;
+import com.daily.product.support.domain.faq.type.FaqType;
 import com.daily.product.support.service.FaqService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,11 @@ public class SupportController {
     @GetMapping("/faq")
     public ResponseEntity<List<Faq>> findAllFaq() {
         return ResponseEntity.ok(faqService.findAllFaq());
+    }
+
+    @GetMapping("/faqType")
+    public ResponseEntity<List<FaqType>> findAllFaqType() {
+        return ResponseEntity.ok(faqService.findAllFaqType());
     }
 
 }
