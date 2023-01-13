@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
     private static final String TITLE = "Daily Product FAQ";
-    private static final String DESCRIPTION = "실제 연동은 8000 포트를 통해 연동한다. (http://url:8000/endpoint)";
+    private static final String DESCRIPTION = "실제 연동은 8000 포트를 통해 CLIENT-KEY를 헤더에 지정 후 호출한다. (http://url:8000/endpoint)";
     private static final String VERSION = "1.0.0";
 
     @Bean
