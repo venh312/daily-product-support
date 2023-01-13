@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class FaqTypeRequestDto {
-    private Long id;
+public class FaqTypeSaveRequestDto {
     private String name;
 
     public FaqType toEntity() {

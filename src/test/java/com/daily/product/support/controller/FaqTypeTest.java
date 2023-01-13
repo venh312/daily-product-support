@@ -1,6 +1,7 @@
 package com.daily.product.support.controller;
 
-import com.daily.product.support.dto.FaqTypeRequestDto;
+import com.daily.product.support.dto.FaqTypeSaveRequestDto;
+import com.daily.product.support.dto.FaqTypeUpdateRequestDto;
 import com.daily.product.support.service.FaqService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,14 @@ class FaqTypeTest {
 
     @Test
     void faqType_저장_테스트() {
-        FaqTypeRequestDto requestDto = new FaqTypeRequestDto();
+        FaqTypeSaveRequestDto requestDto = new FaqTypeSaveRequestDto();
         requestDto.setName("ZigZaG");
         Assert.notEmpty(Collections.singleton(faqService.saveType(requestDto)), "Empty saveType();");
     }
 
     @Test
     void faqType_수정_테스트() {
-        FaqTypeRequestDto requestDto = new FaqTypeRequestDto();
+        FaqTypeUpdateRequestDto requestDto = new FaqTypeUpdateRequestDto();
         requestDto.setId(1L);
         requestDto.setName("ZigZaG");
         Assert.isTrue(faqService.updateType(requestDto), "Empty updateType();");
@@ -35,8 +36,6 @@ class FaqTypeTest {
 
     @Test
     void faqType_삭제_테스트() {
-        FaqTypeRequestDto requestDto = new FaqTypeRequestDto();
-        requestDto.setId(6L);
-        faqService.deleteType(requestDto);
+        faqService.deleteType(6L);
     }
 }

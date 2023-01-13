@@ -2,10 +2,7 @@ package com.daily.product.support.service;
 
 import com.daily.product.support.domain.faq.Faq;
 import com.daily.product.support.domain.faq.type.FaqType;
-import com.daily.product.support.dto.FaqRequestDto;
-import com.daily.product.support.dto.FaqResultDto;
-import com.daily.product.support.dto.FaqTypeRequestDto;
-import com.daily.product.support.dto.FaqTypeResultDto;
+import com.daily.product.support.dto.*;
 import com.daily.product.support.repository.FaqRepository;
 import com.daily.product.support.repository.FaqTypeRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +18,7 @@ public class FaqService {
     private final FaqRepository faqRepository;
     private final FaqTypeRepository faqTypeRepository;
 
-    public Long saveType(FaqTypeRequestDto requestDto) {
+    public Long saveType(FaqTypeSaveRequestDto requestDto) {
         return faqTypeRepository.save(requestDto.toEntity()).getId();
     }
 
@@ -30,7 +27,7 @@ public class FaqService {
     }
 
     @Transactional
-    public boolean updateType(FaqTypeRequestDto requestDto) {
+    public boolean updateType(FaqTypeUpdateRequestDto requestDto) {
         Optional<FaqType> faqType = faqTypeRepository.findById(requestDto.getId());
         if (faqType.isPresent()) {
             faqType.get().update(requestDto.getName());
@@ -39,11 +36,11 @@ public class FaqService {
         return false;
     }
 
-    public void deleteType(FaqTypeRequestDto requestDto) {
-        faqTypeRepository.deleteById(requestDto.getId());
+    public void deleteType(Long id) {
+        faqTypeRepository.deleteById(id);
     }
 
-    public Long saveFaq(FaqRequestDto requestDto) {
+    public Long saveFaq(FaqSaveRequestDto requestDto) {
         return faqRepository.save(requestDto.toEntity()).getId();
     }
 
@@ -52,7 +49,7 @@ public class FaqService {
     }
 
     @Transactional
-    public boolean updateFaq(FaqRequestDto requestDto) {
+    public boolean updateFaq(FaqUpdateRequestDto requestDto) {
         Optional<Faq> faq = faqRepository.findById(requestDto.getId());
         if (faq.isPresent()) {
             faq.get().update(requestDto.getTypeId(), requestDto.getTitle(), requestDto.getContents(), requestDto.getModifyId());
@@ -61,7 +58,7 @@ public class FaqService {
         return false;
     }
 
-    public void deleteFaq(FaqRequestDto requestDto) {
-        faqRepository.deleteById(requestDto.getId());
+    public void deleteFaq(Long id) {
+        faqRepository.deleteById(id);
     }
 }

@@ -1,6 +1,7 @@
 package com.daily.product.support.controller;
 
-import com.daily.product.support.dto.FaqRequestDto;
+import com.daily.product.support.dto.FaqSaveRequestDto;
+import com.daily.product.support.dto.FaqUpdateRequestDto;
 import com.daily.product.support.service.FaqService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class FaqTest {
 
     @Test
     void faq_저장_테스트() {
-        FaqRequestDto requestDto = new FaqRequestDto();
+        FaqSaveRequestDto requestDto = new FaqSaveRequestDto();
         requestDto.setTypeId(1L);
         requestDto.setTitle("테스트");
         requestDto.setContents("내용테스트");
@@ -30,7 +31,7 @@ public class FaqTest {
 
     @Test
     void faq_수정_테스트() {
-        FaqRequestDto requestDto = new FaqRequestDto();
+        FaqUpdateRequestDto requestDto = new FaqUpdateRequestDto();
         requestDto.setId(1L);
         requestDto.setTypeId(1L);
         requestDto.setTitle("수정제목");
@@ -41,8 +42,6 @@ public class FaqTest {
 
     @Test
     void faq_삭제_테스트() {
-        FaqRequestDto requestDto = new FaqRequestDto();
-        requestDto.setId(4L);
-        faqService.deleteFaq(requestDto);
+        faqService.deleteFaq(4L);
     }
 }

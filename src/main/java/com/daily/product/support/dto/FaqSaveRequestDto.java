@@ -5,13 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class FaqRequestDto {
-    private Long id;
+public class FaqSaveRequestDto {
     private Long typeId;
     private String title;
     private String contents;
     private Long registerId;
-    private Long modifyId;
 
     public Faq toEntity() {
         return Faq.builder()
