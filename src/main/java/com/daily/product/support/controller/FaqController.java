@@ -24,8 +24,7 @@ public class FaqController {
         @Parameter(name="name", description = "이름", required = true)
     })
     @PostMapping("/type")
-    public ResponseEntity<Long> saveType(
-            @RequestBody FaqTypeSaveRequestDto requestDto) {
+    public ResponseEntity<Long> saveType(FaqTypeSaveRequestDto requestDto) {
         return ResponseEntity.ok(faqService.saveType(requestDto));
     }
 
@@ -41,8 +40,7 @@ public class FaqController {
         @Parameter(name="name", description = "이름", required = true)
     })
     @PatchMapping("/type")
-    public ResponseEntity<Boolean> updateType(
-            @RequestBody FaqTypeUpdateRequestDto requestDto) {
+    public ResponseEntity<Boolean> updateType(FaqTypeUpdateRequestDto requestDto) {
         return ResponseEntity.ok(faqService.updateType(requestDto));
     }
 
@@ -64,8 +62,8 @@ public class FaqController {
         @Parameter(name="registerId", description = "등록자 PK", required = true)
     })
     @PostMapping
-    public ResponseEntity<Long> saveFaq(
-            @RequestBody FaqSaveRequestDto requestDto) {
+    public ResponseEntity<Long> saveFaq(FaqSaveRequestDto requestDto) {
+            System.out.println(requestDto);
         return ResponseEntity.ok(faqService.saveFaq(requestDto));
     }
 
@@ -86,8 +84,7 @@ public class FaqController {
         @Parameter(name="modifyId", description = "변경자 PK", required = true)
     })
     @PatchMapping
-    public ResponseEntity<Boolean> updateFaq(
-            @RequestBody FaqUpdateRequestDto requestDto) {
+    public ResponseEntity<Boolean> updateFaq(FaqUpdateRequestDto requestDto) {
         return ResponseEntity.ok(faqService.updateFaq(requestDto));
     }
 
