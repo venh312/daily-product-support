@@ -39,7 +39,7 @@ public class FaqController {
         @Parameter(name="id", description = "PK", required = true),
         @Parameter(name="name", description = "이름", required = true)
     })
-    @PatchMapping("/type")
+    @PutMapping("/type")
     public ResponseEntity<Boolean> updateType(FaqTypeUpdateRequestDto requestDto) {
         return ResponseEntity.ok(faqService.updateType(requestDto));
     }
@@ -83,7 +83,7 @@ public class FaqController {
         @Parameter(name="contents", description = "내용", required = true),
         @Parameter(name="modifyId", description = "변경자 PK", required = true)
     })
-    @PatchMapping
+    @PutMapping
     public ResponseEntity<Boolean> updateFaq(FaqUpdateRequestDto requestDto) {
         return ResponseEntity.ok(faqService.updateFaq(requestDto));
     }
